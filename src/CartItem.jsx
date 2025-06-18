@@ -23,14 +23,12 @@ const CartItem = ({ onContinueShopping } ) => {
     return total; // Return total formatted to 2 decimal places
  
   };
-
   const handleContinueShopping = (e) => {
-    e.preventDefault();
-    onContinueShopping(); // Call the function passed from ProductList
-    window.scrollTo(0, 0); // Scroll to the top of the page
-
-   
+    if (onContinueShopping) {
+      onContinueShopping(e); // Let the parent handle the navigation logic
+    }
   };
+  
 
 
 
@@ -98,7 +96,7 @@ const CartItem = ({ onContinueShopping } ) => {
       </div>
       <div style={{ marginTop: '20px', color: 'black' }} className='total_cart_amount'></div>
       <div className="continue_shopping_btn">
-        <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
+      <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
         <br />
         <button className="get-started-button1">Checkout</button>
       </div>
